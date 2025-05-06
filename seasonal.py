@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # Đọc dữ liệu
 df = pd.read_csv(r"D:\time_seris_btap1\playground-series-s5e4\train.csv")
-df1 = df[df["Publication_Day"] == "Thursday"]
+df1 = df[df["Publication_Day"] == "Saturday"]
 df1 = df1.drop("id", axis=1)
 df2 = df1[df1["Publication_Time"] == "Morning"]
 observations = df2['Listening_Time_minutes'].values
@@ -41,6 +41,5 @@ state_means, _ = kf.filter(observations)
 plt.figure(figsize=(14, 5))
 plt.plot(observations, label="Original")
 plt.plot(state_means[:, 0], label="Kalman Seasonal")
-plt.title("Kalman Filter with Seasonality on Thursday Morning Listening Time")
+plt.title("Kalman Filter with Seasonality on Saturday Morning Listening Time")
 plt.legend()
-plt.savefig("kalman_seasonal.png")
